@@ -1,0 +1,113 @@
+let cities = ["skopje", "london", "paris", "tokyo", "new york"];
+const GET_CITIES = cities.map((item) => {
+  return gql`
+  query {
+    getCityByName(name: "${item}") {
+      id
+      name
+      country
+      coord {
+        lon
+        lat
+      }
+      weather {
+        summary {
+          title
+          description
+          icon
+        }
+        temperature {
+          actual
+          feelsLike
+          min
+          max
+        }
+        wind {
+          speed
+          deg
+        }
+        clouds {
+          all
+          visibility
+          humidity
+        }
+        timestamp
+      }
+    }
+  }
+`;
+});
+
+const GET_CITY = gql`
+  query getCityByName($name: String!) {
+    getCityByName(name: $name) {
+      id
+      name
+      country
+      coord {
+        lon
+        lat
+      }
+      weather {
+        summary {
+          title
+          description
+          icon
+        }
+        temperature {
+          actual
+          feelsLike
+          min
+          max
+        }
+        wind {
+          speed
+          deg
+        }
+        clouds {
+          all
+          visibility
+          humidity
+        }
+        timestamp
+      }
+    }
+  }
+`;
+
+const GET_WEATHER = gql`
+  query {
+    getCityByName(name: "Skopje") {
+      id
+      name
+      country
+      coord {
+        lon
+        lat
+      }
+      weather {
+        summary {
+          title
+          description
+          icon
+        }
+        temperature {
+          actual
+          feelsLike
+          min
+          max
+        }
+        wind {
+          speed
+          deg
+        }
+        clouds {
+          all
+          visibility
+          humidity
+        }
+        timestamp
+      }
+    }
+  }
+`;
